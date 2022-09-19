@@ -1,0 +1,23 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	<Script file="player_frame.lua"/>
+	<Frame name="PlayerFrame">
+		<Scripts>
+			<OnLoad>
+				this:RegisterEvent("PLAYER_ENTERING_WORLD");
+				this:RegisterEvent("VARIABLES_LOADED");
+                this:RegisterEvent("PLAYER_LEVEL_UP");
+			</OnLoad>
+			<OnEvent>
+				if (event == "PLAYER_ENTERING_WORLD" or event == "PLAYER_LEVEL_UP") then
+					if (UnitLevel("player") > 0) then
+						PlayerFrameTexture:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame-Elite.blp");
+					end
+				end
+				if (event == "VARIABLES_LOADED") then
+					PlayerFrame:SetPoint("TOPLEFT", "UIParent", "TOPLEFT", 8, -4);
+					PetFrame:SetPoint("TOPLEFT", "PlayerFrame", "TOPLEFT", 88, -62);
+				end
+			</OnEvent>
+		</Scripts>
+	</Frame>
+</Ui>

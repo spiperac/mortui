@@ -1,0 +1,20 @@
+## Interface: 30300
+## Title: MortUI
+## Notes: MortUI is a custom minimalistic UI reusing as much as possible of Blizzard original UI
+## Version: 1.0.0
+## X-Date: September 19, 2022
+## Author: spiperac
+## X-Email: spiperac@denkei.org
+## X-Website: https://badarg.github.io
+## X-Category: MYADDONS_CATEGORY_BARS
+## X-Help: MORTUI_HELP
+## RequiredDeps:
+## OptionalDeps:
+## LoadOnDemand: 0
+## SavedVariables:
+## SavedVariablesPerCharacter: mortui_settings
+
+Localization.lua
+settings\MortUISettings.xml
+bar_ui\MortUIBarFrame.xml
+player_frame\player_frame.xml
