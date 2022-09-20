@@ -7,11 +7,11 @@
 	<Frame name="mortUIBarFrame" hidden="true">
 		<Scripts>
 			<OnLoad>
-        mortUIBarFrame_OnLoad(self);
-      </OnLoad>
+				mortUIBarFrame_OnLoad(self);
+			</OnLoad>
 			<OnEvent>
-        mortUIBarFrame_OnEvent(self, event, ...);
-      </OnEvent>
+				mortUIBarFrame_OnEvent(self, event, ...);
+			</OnEvent>
 		</Scripts>
 	</Frame>
 </Ui>

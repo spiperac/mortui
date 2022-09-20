@@ -12,9 +12,8 @@
 ## OptionalDeps:
 ## LoadOnDemand: 0
 ## SavedVariables:
-## SavedVariablesPerCharacter: mortui_settings
+## SavedVariablesPerCharacter: mortuidb
 
-Localization.lua
-settings\MortUISettings.xml
+mortui.lua
 bar_ui\MortUIBarFrame.xml
 player_frame\player_frame.xml

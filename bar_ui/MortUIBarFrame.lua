@@ -1,5 +1,5 @@
 -- mortUI v2.0 --
-local _, Addon, mortui_settings = ...;
+local ADDON, Addon = ...;
 
 --------------------------------------------------------------------------------------------------
 -- Global variables
@@ -72,10 +72,16 @@ function mortUIBarFrame_Initialize()
 	MainMenuMaxLevelBar1:SetPoint("BOTTOM", MainMenuBarMaxLevelBar, "BOTTOM", 128, 7);
 	MainMenuMaxLevelBar2:Hide();
 	MainMenuMaxLevelBar3:Hide();
-
-	-- Hide Objective Trackers
-	WatchFrame:Hide();
 	
+	-- Watch/Objective frame
+	if (Addon.Config.showTracker) then
+		-- Show Objective Trackers
+		WatchFrame:Show();
+	else
+		-- Hide Objective Trackers
+		WatchFrame:Hide();
+	end
+
 	-- Hide Gryphons
 	MainMenuBarLeftEndCap:Hide();
 	MainMenuBarRightEndCap:Hide();
@@ -161,4 +167,14 @@ function mortUIVehicleMenuBar_MoveMicroButtons(skinName)
 		mortUIBarFrame_ShowBar(mortUIBarVisibleBar);
 	end
 
+end
+
+function mortUIShowObjectives()
+	if (Addon.Config.showTracker) then
+		-- Show Objective Trackers
+		WatchFrame:Show();
+	else
+		-- Hide Objective Trackers
+		WatchFrame:Hide();
+	end
 end
