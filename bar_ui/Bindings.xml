@@ -1,8 +1,0 @@
-<!-- mortUIBar v2.0 -->
-
-
-<Bindings>
-	<Binding name="mortUIBAR_TOGGLE" header="mortUIBAR">
-		mortUIBarFrame_Toggle();
-	</Binding>
-</Bindings>

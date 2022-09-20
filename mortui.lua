@@ -1,5 +1,12 @@
 local ADDON, Addon = ...
 
+--------------------------------------------------------------------------------------------------
+-- Global variables
+--------------------------------------------------------------------------------------------------
+
+BINDING_HEADER_MORTUIBAR = "MortUI v1";
+--------------------------------------------------------------------------------------------------
+
 Addon.defaults = {
     loginCount = 0,
     showTracker = true,
@@ -10,7 +17,7 @@ function Addon:OnLoad()
     local frame = self:CreateHiddenFrame('Frame')
 
     -- Greet
-    message("Welcome to MortUI v1.0.0")
+    print("Welcome to MortUI v1.0.0")
 
     -- setup an event handler
     frame:SetScript(
