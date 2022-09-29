@@ -1,0 +1,8 @@
+<!-- MortUI Bindings -->
+
+<Bindings>
+	<Binding name="MAINBAR_TOGGLE" header="MORTUIBAR" description="MortUI Bindings">
+		<!-- Toggle Action/Main bars -->
+		mortUIBarFrame_Toggle();
+	</Binding>
+</Bindings>

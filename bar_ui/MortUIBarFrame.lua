@@ -40,6 +40,21 @@ function mortUIBarFrame_OnEvent(self, event, ...)
 end
 
 
+local function HideArt(frame)
+	local y={ frame:GetRegions() } 
+	for k,v in pairs(y)do 
+		if v:GetObjectType()=="Texture" then 
+			v:SetTexture(nil)
+		end 
+	end 
+	y={ frame:GetChildren() } 
+	for k,v in pairs(y)do 
+		if v:GetObjectType()~="CheckButton" and v:GetObjectType()~="Button" then  
+			HideArt(v)
+		end 
+	end 
+end 
+
 --------------------------------------------------------------------------------------------------
 -- Initialize functions
 --------------------------------------------------------------------------------------------------
@@ -63,6 +78,8 @@ function mortUIBarFrame_Initialize()
 	MainMenuBarMaxLevelBar:SetWidth(512);
 	MainMenuMaxLevelBar0:SetPoint("BOTTOM", MainMenuBarMaxLevelBar, "BOTTOM", -128, 7);
 	MainMenuMaxLevelBar1:SetPoint("BOTTOM", MainMenuBarMaxLevelBar, "BOTTOM", 128, 7);
+	MainMenuMaxLevelBar0:Hide();
+	MainMenuMaxLevelBar1:Hide();
 	MainMenuMaxLevelBar2:Hide();
 	MainMenuMaxLevelBar3:Hide();
 	
@@ -91,12 +108,16 @@ function mortUIBarFrame_Initialize()
 	BonusActionButton1:SetPoint("BOTTOMLEFT", BonusActionBarFrame, "BOTTOMLEFT", 4, 3);
 	MultiBarBottomLeft:SetPoint("BOTTOMLEFT", ActionButton1, "TOPLEFT", -256, 18);
 	
+	
 	-- Initialize the Micro bar
 	ActionBarUpButton:ClearAllPoints();
 	ActionBarDownButton:ClearAllPoints();
 	
 	-- Hook functions
 	hooksecurefunc("VehicleMenuBar_MoveMicroButtons", mortUIVehicleMenuBar_MoveMicroButtons);
+
+	-- Hide Art
+	HideArt(MainMenuBarArtFrame)
 
 end
 
@@ -170,4 +191,33 @@ function mortUIShowObjectives()
 		-- Hide Objective Trackers
 		WatchFrame:Hide();
 	end
+end
+
+local frame=CreateFrame("Frame")
+frame:RegisterEvent("ADDON_LOADED")
+
+frame:SetScript("OnEvent", function(self, event, addon)
+        if (addon == "Blizzard_TimeManager") then
+                for i, v in pairs({PlayerFrameTexture, TargetFrameTextureFrameTexture, PetFrameTexture, PartyMemberFrame1Texture, PartyMemberFrame2Texture, PartyMemberFrame3Texture, PartyMemberFrame4Texture,
+                        PartyMemberFrame1PetFrameTexture, PartyMemberFrame2PetFrameTexture, PartyMemberFrame3PetFrameTexture, PartyMemberFrame4PetFrameTexture, FocusFrameTextureFrameTexture,
+                        TargetFrameToTTextureFrameTexture, FocusFrameToTTextureFrameTexture, BonusActionBarFrameTexture0, BonusActionBarFrameTexture1, BonusActionBarFrameTexture2, BonusActionBarFrameTexture3,
+                        BonusActionBarFrameTexture4, MainMenuBarTexture0, MainMenuBarTexture1, MainMenuBarTexture2, MainMenuBarTexture3, MainMenuMaxLevelBar0, MainMenuMaxLevelBar1, MainMenuMaxLevelBar2,
+                        MainMenuMaxLevelBar3, MinimapBorder, CastingBarFrameBorder, FocusFrameSpellBarBorder, TargetFrameSpellBarBorder, MiniMapTrackingButtonBorder, MiniMapLFGFrameBorder, MiniMapBattlefieldBorder,
+                        MiniMapMailBorder, MinimapBorderTop,
+                        select(1, TimeManagerClockButton:GetRegions())
+                }) do
+                        v:SetVertexColor(.4, .4, .4)
+                end
+
+                for i,v in pairs({ select(2, TimeManagerClockButton:GetRegions()) }) do
+                        v:SetVertexColor(1, 1, 1)
+                end
+
+                self:UnregisterEvent("ADDON_LOADED")
+                frame:SetScript("OnEvent", nil)
+        end
+end)
+
+for i, v in pairs({ MainMenuBarLeftEndCap, MainMenuBarRightEndCap }) do
+        v:SetVertexColor(.35, .35, .35)
 end
